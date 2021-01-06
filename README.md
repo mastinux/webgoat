@@ -16,17 +16,23 @@ Visit
 
 `http://localhost:8080/WebGoat`
 
+username/password = newbie/eibwen
+
 ### WebWolf - Setup
 
 Feature supported by WebWolf:
 
-- host a file
-- e-mail client
+- hosting a file
+- receiving email
 - landing page for incomping requests
 
-Start WebWolf
+Start WebWolf along with a running WebGoat
 
 `$ java -jar webwolf-8.1.0.jar [--server.port=9090] [--server.address=localhost]`
+
+Visit
+
+`http://localhost:9090`
 
 ## Lessons
 
@@ -36,4 +42,5 @@ For each lesson there are three steps:
 - learn by doing
 - explain mitigation
 
+- [General](./lessons/README-General.md)
 - TODO
