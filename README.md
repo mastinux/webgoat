@@ -46,4 +46,5 @@ Lessons
 
 - [General](./lessons/README-General.md)
 - [A1 - Injection](./lessons/README-A1-Injection.md)
+- [A2 - Broken Authentication](./lessons/README-A2-Broken-Authentication.md)
 - TODO
