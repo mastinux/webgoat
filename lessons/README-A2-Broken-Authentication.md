@@ -103,46 +103,53 @@ In a normal web application you are better of using plain old cookies.
 
 ### 7. Refreshing a token
 
-Logfile content:
-
-```
-194.201.170.15 - - [28/Jan/2016:21:28:01 +0100] "GET /JWT/refresh/checkout?token=eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE1MjYxMzE0MTEsImV4cCI6MTUyNjIxNzgxMSwiYWRtaW4iOiJmYWxzZSIsInVzZXIiOiJUb20ifQ.DCoaq9zQkyDH25EcVWKcdbyVfUL4c9D4jRvsqOqvi9iAd4QuqmKcchfbU8FNzeBNF9tLeFXHZLU4yRkq-bjm7Q HTTP/1.1" 401 242 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0" "-"
-194.201.170.15 - - [28/Jan/2016:21:28:01 +0100] "POST /JWT/refresh/moveToCheckout HTTP/1.1" 200 12783 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0" "-"
-194.201.170.15 - - [28/Jan/2016:21:28:01 +0100] "POST /JWT/refresh/login HTTP/1.1" 200 212 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0" "-"
-194.201.170.15 - - [28/Jan/2016:21:28:01 +0100] "GET /JWT/refresh/addItems HTTP/1.1" 404 249 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0" "-"
-195.206.170.15 - - [28/Jan/2016:21:28:01 +0100] "POST /JWT/refresh/moveToCheckout HTTP/1.1" 404 215 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36" "-"
-```
-
-```
-POST http://localhost:8080/WebGoat/JWT/refresh/login HTTP/1.1
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0
-Accept: */*
-Accept-Language: en-US,en;q=0.5
-Content-Type: application/json
-X-Requested-With: XMLHttpRequest
-Content-Length: 46
-Origin: https://localhost:8080
-Connection: keep-alive
-Referer: https://localhost:8080/WebGoat/start.mvc
-Cookie: JSESSIONID=VkTTDokwF6mHqAv-2-6ME1FcB7iBOc3DaxJRIhy9
-Host: localhost:8080
-
-{"user":"Jerry","password":"bm5nhSkxCXZkKRy4"}
-```
-
-```
-HTTP/1.1 200 OK
-Connection: keep-alive
-X-XSS-Protection: 1; mode=block
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-Content-Type: application/json
-Date: Mon, 18 Jan 2021 21:55:06 GMT
-
-{
-  "access_token" : "eyJhbGciOiJIUzUxMiJ9.eyJhZG1pbiI6ImZhbHNlIiwidXNlciI6IkplcnJ5In0.Z-ZX2L0Tuub0LEyj9NmyVADu7tK40gL9h1EJeRg1DDa6z5_H-SrexH1MYHoIxRyApnOP7NfFonP3rOw1Y5qi0A",
-  "refresh_token" : "wdlkIZVfyAFuscUUKsmV"
-}
-```
-
 TODO find the way to use refresh_token (Jerry) in order to refresh logfile token (Tom)
+
+### 8. Final Challenges
+
+$ echo -n eyJ0eXAiOiJKV1QiLCJraWQiOiJ3ZWJnb2F0X2tleSIsImFsZyI6IkhTMjU2In0= | base64 -d
+{"typ":"JWT","kid":"webgoat_key","alg":"HS256"}
+
+kid = webgoat_key
+
+TODO
+
+## Password reset
+
+### 1. Concept
+
+### 2. Email functionality with WebWolf
+
+### 3. Find out if account exists
+
+### 4. Security questions
+
+username: `tom`
+favourite color: `purple`
+
+username: `admin`
+favourite color: `green`
+
+username: `larry`
+favourite color: `yellow`
+
+### 5. The Problem with Security Questions
+
+The "perfect" security question should be hard to crack, but easy to remember.
+
+### 6. Creating the password reset link
+
+Make sure the link:
+
+- is a unique link with a random token
+- can only be used once
+- is only valid for a limited amount of time.
+
+Reset the password of Tom (tom@webgoat-cloud.org)
+
+TODO
+
+### 7. How to prevent abusing the password reset function
+
+## Secure Passwords
+
