@@ -153,3 +153,40 @@ TODO
 
 ## Secure Passwords
 
+### 1. Secure Passwords
+
+### 2. National Institute of Standards and Technology (NIST)
+
+### 3. NIST password standard
+
+#### Password rules
+
+SP 800-series provide recommendations for implementing secure passowrd systems:
+
+- no composition rules
+- no password hints
+- no security questions
+- no unnecessary changing of passwords
+- minimum size of 8 characters
+- support all UNICODE characters
+- strength meter
+- check the password against known bad choices
+
+#### Usability
+
+- allow pasting into the password input
+- allow to display the password
+- affer a strength meter
+
+### 4. How long could it take to brute force your password?
+
+### 5. Are your passwords secure?
+
+### 6. Storing passwords
+
+- use encryption and a protected channel for requesting passwords
+- resistant to offline attacks
+- use salts
+- use hashing
+- memory hard key derivation function
+- high cost factor (iteration count)
