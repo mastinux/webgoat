@@ -5,6 +5,8 @@
 - [A2 - Broken Authentication](#a2---broken-authentication)
   - [Authentication Bypass](#authentication-bypass)
   - [JWT tokens](#jwt-tokens)
+  - [Password reset](#password-reset)
+  - [Secure Passwords](#secure-passwords)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
