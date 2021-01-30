@@ -48,4 +48,5 @@ Lessons
 - [A1 - Injection](./lessons/README-A1-Injection.md)
 - [A2 - Broken Authentication](./lessons/README-A2-Broken-Authentication.md)
 - [A3 - Sensitive Data Exposure](./lessons/README-A3-Sensitive-Data-Exposure.md)
+- [A4 - XML External Entities](./lessons/README-A4-XML-External-Entities.md)
 - TODO
