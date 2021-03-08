@@ -50,4 +50,5 @@ Lessons
 - [A3 - Sensitive Data Exposure](./lessons/README-A3-Sensitive-Data-Exposure.md)
 - [A4 - XML External Entities](./lessons/README-A4-XML-External-Entities.md)
 - [A5 - Broken Access Control](./lessons/README-A5-Broken-Access-Control.md)
+- [A7 - Cross-Site Scripting](./lessons/README-A7-Cross-Site-Scripting.md)
 - TODO

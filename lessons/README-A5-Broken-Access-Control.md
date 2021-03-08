@@ -114,9 +114,4 @@ Items not visible in menu: `Users` (`/users`) and `Config` (`/config`).
 
 ### 3. Just Try It
 
-Hidden menu items:
-
-- /users
-- /config
-
-TODO
+\# FIXME
