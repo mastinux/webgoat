@@ -63,4 +63,29 @@ It will only ever be processed by the client.
 
 ### 10. Identify potential for DOM-Based XSS
 
-TODO
+- base route: `start.mvc#lesson/`
+- parameters processed by the JavaScript route handler: `CrossSiteScripting.lesson/9`
+
+GoatRouter.js
+
+``` javascript
+'lesson/:name': 'lessonRoute',
+'lesson/:name/:pageNum': 'lessonPageRoute',
+'test/:param': 'testRoute',
+```
+
+- test code in production: `start.mvc#test/`
+
+### 11. Try It! DOM-Based XSS
+
+- function to execute: `webgoat.customjs.phoneHome()`
+
+FIXME
+
+### 12. Quiz
+
+1. 4
+2. 3
+3. 1
+4. 2
+5. 4

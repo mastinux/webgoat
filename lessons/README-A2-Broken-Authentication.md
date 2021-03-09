@@ -22,7 +22,7 @@
 
 ### 2. 2FA Password Reset
 
-TODO
+FIXME
 
 ## JWT tokens
 
@@ -76,7 +76,7 @@ JWT token: `eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJXZWJHb2F0IFRva2VuIEJ1aWxkZXIiLCJhdWQ
 $ time jwt-cracker "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJXZWJHb2F0IFRva2VuIEJ1aWxkZXIiLCJhdWQiOiJ3ZWJnb2F0Lm9yZyIsImlhdCI6MTYxMTAwMTQ1NiwiZXhwIjoxNjExMDAxNTE2LCJzdWIiOiJ0b21Ad2ViZ29hdC5vcmciLCJ1c2VybmFtZSI6IlRvbSIsIkVtYWlsIjoidG9tQHdlYmdvYXQub3JnIiwiUm9sZSI6WyJNYW5hZ2VyIiwiUHJvamVjdCBBZG1pbmlzdHJhdG9yIl19.3ngFGIX-epPtQFF53n8nNmO2DWZR05pEeb0wqSeKgvk"
 ```
 
-TODO jwt-cracker output
+FIXME jwt-cracker output
 
 $ echo -n eyJhbGciOiJIUzI1NiJ9 | base64 -d
 {"alg":"HS256"}
@@ -105,7 +105,7 @@ In a normal web application you are better of using plain old cookies.
 
 ### 7. Refreshing a token
 
-TODO find the way to use refresh_token (Jerry) in order to refresh logfile token (Tom)
+FIXME find the way to use refresh_token (Jerry) in order to refresh logfile token (Tom)
 
 ### 8. Final Challenges
 
@@ -114,7 +114,7 @@ $ echo -n eyJ0eXAiOiJKV1QiLCJraWQiOiJ3ZWJnb2F0X2tleSIsImFsZyI6IkhTMjU2In0= | bas
 
 kid = webgoat_key
 
-TODO
+FIXME
 
 ## Password reset
 
@@ -149,7 +149,7 @@ Make sure the link:
 
 Reset the password of Tom (tom@webgoat-cloud.org)
 
-TODO
+FIXME
 
 ### 7. How to prevent abusing the password reset function
 
