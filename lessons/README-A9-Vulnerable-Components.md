@@ -4,28 +4,32 @@
 
 ### 1. Comcept
 
-TODO
+### 2. The Open Source Ecosystem
 
-### 2.
+### 3. 2013 OWASP Top 10 - A9
 
-### 3.
+### 4. Components are everywhere
 
-### 4.
+### 5. The exploit is not always in "your" code
 
-### 5.
+### 6. Knowing the OSS "Bill of Materials" is the staring point
 
-### 6.
+### 7. How do I generate a Bill of Materials
 
-### 7.
+Add OWASP Dependency check as a plugin to the pom.xml of the Maven projet.
 
-### 8.
+`$ mvn clean install -Powasp`
 
-### 9.
+### 8. Security Information Overload
 
-### 10.
+### 9. Licence Information Overload
 
-### 11.
+### 10. Architecture Information
 
-### 12.
+### 11. Some Examples of OSS Risk
 
-### 13.
+### 12. Exploiting CVE-2013-7285 (XStream)
+
+FIXME
+
+### 13. Summary
