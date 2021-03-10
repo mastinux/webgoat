@@ -51,6 +51,8 @@ Lessons
 - [A4 - XML External Entities](./lessons/README-A4-XML-External-Entities.md)
 - [A5 - Broken Access Control](./lessons/README-A5-Broken-Access-Control.md)
 - [A7 - Cross-Site Scripting](./lessons/README-A7-Cross-Site-Scripting.md)
+- [A8 - Insecure Deserialization](./lessons/README-A8-Insecure-Deserialization.md)
+- [A9 - Vulnerable Components](./lessons/README-A9-Vulnerable-Components.md)
 - TODO
 
 \# TODO complete FIXMEs
