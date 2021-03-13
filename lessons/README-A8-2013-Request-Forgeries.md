@@ -103,8 +103,51 @@ POST /csrf/feedback/message HTTP/1.1
 
 ### 8. Login CSRF attack
 
-TODO
+The attacker creates an account on the vulnerable site.
+The attacker createa CSRF login form that is served to the victim.
+The victim inconciously logins to the vulnerable site.
+The victim's activities are logged for the attacker account.
+Afterwards the attacker can gather information on the victim activity on the vulnerable site.
 
-### 9. 
+### 9. CSRF Impact & Solutions
+
+- same site cookie attribute
+- built-in support from framework
 
 ## Server-Side Request Forgery
+
+### 1. Concept
+
+### 2. Change the URL to display Jerry
+
+Change
+
+```xml
+<input id="url" type="hidden" name="url" value="images/tom.jpg">
+```
+
+to
+
+```xml
+<input id="url" type="hidden" name="url" value="images/jerry.jpg">
+```
+
+### 3. Change the URL to display the Interface Configuration with ifconfig.pro
+
+Change
+
+```xml
+<input id="url" type="hidden" name="url" value="images/tom.jpg">
+```
+
+to
+
+```xml
+<input id="url" type="hidden" name="url" value="http://ifconfig.pro">
+```
+
+### 4. Prevent
+
+- whitelist of allowed domains, resources and protocols from where the web server can fetch resources
+- input validation
+- avoid user input for resources to be fetched
