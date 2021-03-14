@@ -54,6 +54,8 @@ Lessons
 - [A8 - Insecure Deserialization](./lessons/README-A8-Insecure-Deserialization.md)
 - [A9 - Vulnerable Components](./lessons/README-A9-Vulnerable-Components.md)
 - [A8:2013 - Request Forgeries](./lessons/README-A8-2013-Request-Forgeries.md)
+- [Client Side](./lessons/Client-side.md)
 - TODO
 
 \# TODO complete FIXMEs
+\# TODO 
