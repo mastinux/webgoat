@@ -31,9 +31,69 @@ select=option3&radio=option3&checkbox=alfa&shortInput=123456
 
 ### 3. Validation
 
-TODO
+Original POST body:
+
+```
+field1=abc&field2=123&field3=abc+123+ABC&field4=seven&field5=01101&field6=90210-1111&field7=301-604-4882&error=0
+```
+
+Altered POST body:
+
+```
+field1=abcd&field2=1234&field3=abc+123+ABC.&field4=seventy&field5=01101alfa&field6=90210-1111-beta&field7=301-604-4882-gamma&error=0
+```
 
 ## Client side filtering
 
+### Client side filtering
+
+### Salary manager
+
+Server response contains:
+
+```
+...
+{
+  "Salary" : "450000",
+  "UserID" : "112",
+  "FirstName" : "Neville",
+  "LastName" : "Bartholomew",
+  "SSN" : "111-111-1111"
+}
+...
+```
+
+### Smarthone online shop
+
+`GET http://localhost:8080/WebGoat/clientSideFiltering/challenge-store/coupons/ HTTP/1.1` returns discount codes
+
+```
+...
+{
+    "code" : "get_it_for_free",
+    "discount" : 100
+}
+...
+```
+
 ## HTML tampering
 
+### Concept
+
+### Try it yourself
+
+Original HTML:
+
+```
+<input id="Total" name="Total" type="HIDDEN" value="2999.99">
+```
+
+Altered HTML:
+
+```
+<input id="Total" name="Total" type="HIDDEN" value="9.99">
+```
+
+### Mitigation
+
+Never trust input sent by a client.
