@@ -105,7 +105,7 @@ POST /csrf/feedback/message HTTP/1.1
 
 The attacker creates an account on the vulnerable site.
 The attacker createa CSRF login form that is served to the victim.
-The victim inconciously logins to the vulnerable site.
+The victim inconciously logs in to the vulnerable site.
 The victim's activities are logged for the attacker account.
 Afterwards the attacker can gather information on the victim activity on the vulnerable site.
 

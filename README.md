@@ -55,7 +55,6 @@ Lessons
 - [A9 - Vulnerable Components](./lessons/README-A9-Vulnerable-Components.md)
 - [A8:2013 - Request Forgeries](./lessons/README-A8-2013-Request-Forgeries.md)
 - [Client Side](./lessons/Client-side.md)
-- TODO
+- [Challenges](./lessons/Challenges.md)
 
 \# TODO complete FIXMEs
-\# TODO 
