@@ -22,7 +22,7 @@ Brute forcing is not allowed.
 
 `Reset Password` send a request with POST body `email=admin%40webgoat&token=`
 
-\#TODO how the lesson has been completed?
+\#FIXME how the lesson has been completed?
 
 ## Without password
 
@@ -34,8 +34,8 @@ username_login=Larry&password_login=alfa'+or+1%3D'1
 
 ## Admin password reset
 
-\#TODO
+\#FIXME challenge completed sending admin@localhost, why?
 
 ## Without account
 
-\#TODO
+\#FIXME

@@ -226,9 +226,7 @@ article = 4; sleep(10) --
 
 Exploit:
 
-```sql
-FIXME
-```
+\#FIXME
 
 ## SQL Injection (mitigation)
 
@@ -468,7 +466,7 @@ Full Name: `../test`
 
 ### 3. Path traversal while uploading files
 
-FIXME
+\#FIXME
 
 ### 4. Path traversal while uploading files
 
@@ -491,4 +489,4 @@ Retrieve file with name `path-traversal-secret.jpg`.
 
 Exploit:
 
-FIXME
+\#FIXME
